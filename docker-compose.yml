@@ -1,0 +1,25 @@
+services:
+  vrising:
+    image: trueosiris/vrising
+    container_name: vrising
+    entrypoint: ["/bin/bash", "-c", "sed -i 's/\\r//g' /start.sh && exec /bin/bash /start.sh"]
+    env_file:
+      - .env
+      - .env.server-config
+    volumes:
+      - ./data/server:/mnt/vrising/server
+      - ./data/persistentdata:/mnt/vrising/persistentdata
+      - ./config/ServerVoipSettings.json:/mnt/vrising/server/VRisingServer_Data/StreamingAssets/Settings/ServerVoipSettings.json
+      - ./config/adminlist.txt:/mnt/vrising/persistentdata/Settings/adminlist.txt
+      - ./config/banlist.txt:/mnt/vrising/persistentdata/Settings/banlist.txt
+      - ./config/tempbanlist.txt:/mnt/vrising/persistentdata/Settings/tempbanlist.txt
+
+    ports:
+      - '${GAMEPORT}:${GAMEPORT}/udp'
+      - '${QUERYPORT}:${QUERYPORT}/udp'
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "5"

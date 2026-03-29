@@ -1,0 +1,12 @@
+{
+  "VOIPEnabled": true,
+  "VOIPIssuer": "",
+  "VOIPSecret": "V",
+  "VOIPVivoxDomain": "mtu1xp.vivox.com",
+  "VOIPAPIEndpoint": "",
+  "VOIPAppUserId": "notneeded-notused",
+  "VOIPAppUserPwd": "notneeded-notused",
+  "VOIPConversationalDistance": 14,
+  "VOIPAudibleDistance": 40,
+  "VOIPFadeIntensity": 2.0
+}
